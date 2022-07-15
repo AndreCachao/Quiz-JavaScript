@@ -211,7 +211,7 @@ const tempof=document.getElementById("tempofinal")
     var currentIndex = 0;
     var wrong = 20;
     var i = 0;
-    let totalTime = 0;
+    let totalTime = 120;
     var tempofinal = 0;
     
     let shuffle = function(array) {
@@ -231,8 +231,16 @@ const tempof=document.getElementById("tempofinal")
     shuffle (quizinicial);
 
     let timer = setInterval(function (){ //Função do tempo;
-        totalTime++;
+        totalTime--;
         timer2.innerHTML = fmtMSS(totalTime);
+        if (totalTime == 0){
+            document.getElementById("questionScreen").style.display = "none";
+            document.getElementById("resultScreen").style.display = "block";
+            tempofinal = totalTime;
+            tempof.innerHTML = fmtMSS(tempofinal) + " segundos";
+            score2.innerHTML = score;
+            errou.innerHTML = wrong;
+        }
 
     }, 1000);
 
